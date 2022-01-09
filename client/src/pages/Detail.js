@@ -15,11 +15,6 @@ function Detail() {
 
   const products = data?.products || [];
 
-  useEffect(() => {
-    if (products.length) {
-      setCurrentProduct(products.find((product) => product._id === id));
-    }
-  }, [products, id]);
 
   const [state, dispatch] = useStoreContext();
   const { id } = useParams();
@@ -40,6 +35,13 @@ function Detail() {
       });
     }
   }, [products, data, dispatch, id]);
+
+  
+  useEffect(() => {
+    if (products.length) {
+      setCurrentProduct(products.find((product) => product._id === id));
+    }
+  }, [products, id]);
 
   return (
     <>
